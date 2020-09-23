@@ -1,7 +1,5 @@
-public class ProductNotValid extends Exception{
-    private String sms;
-
+class ProductNotValid extends Exception{
     ProductNotValid(String sms){
-        this.sms = sms;
+        System.out.println(sms);
     }
 }

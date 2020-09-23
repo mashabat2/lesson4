@@ -24,4 +24,8 @@ public class Product {
         return price;
     }
 
+    public void productInfo(){
+        System.out.println("ID: "+id+"\nName: "+name+"\nSupplier: "+supplier+"\nPrice: "+price);
+    }
+
 }

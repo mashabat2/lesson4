@@ -3,7 +3,7 @@ public class ProductCatalog {
 
     Map products = new HashMap<String, List>();
 
-    public List<Product> getAllProducts() {
+    public List getAllProducts() {
         return (List) products;
     }
 

@@ -1,11 +1,51 @@
 public class Main {
-    public static void main(String[] args){
-        ProductCatalog catalog = new ProductCatalog();
+    public static void main(String[] args) throws ProductNotFound {
+        Product first = new Product(10, "Banana", "Farm", "200");
+        Product second = new Product(20, "Orange", "Grands", "250");
+        ProductCatalog2 catalog = new ProductCatalog2();
+
+        // Добавим продукт
+        try {
+            catalog.createProduct(first);
+            catalog.createProduct(second);
+
+        } catch (ProductAlreadyExists e) {
+            e.printStackTrace();
+        }
+
+        // вывод информации о продуктах
+        for (Product product : catalog.getAllProducts()) {
+            product.productInfo();
+            System.out.println("____");
+        }
+
+        Product third = new Product(30, "Apple", "Farm2", "100");
+        // Добавим новый продукт
+
+        try {
+            catalog.updateProduct(third);
+        } catch (ProductNotValid e) {
+            e.printStackTrace();
+        }
+
+
+
+        // вывод информации о продуктах
+        for (Product product : catalog.getAllProducts()) {
+            product.productInfo();
+            System.out.println("____");
+        }
+
+        // удаление продукта
+        catalog.deleteProduct(20);
+
+
+        // вывод информации о продуктах
+        for (Product product : catalog.getAllProducts()) {
+            product.productInfo();
+            System.out.println("____");
+        }
+
+
     }
-
-    Product prod1 = new Product(100, "Apple", "He", "1000");
-    Product prod2 = new Product(200, "Banana", "She", "15000");
-    Product prod3 = new Product(300, "Orange", "They", "1200");
-
-
 }
