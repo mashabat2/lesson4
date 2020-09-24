@@ -1,26 +1,30 @@
 import java.util.*;
 
 public class ProductCatalog2 {
-    private List<Product> products = new ArrayList<>();
+    private final List<Product> products = new ArrayList<>();
 
     public List<Product> getAllProducts() {
         return products;
     }
 
     public void createProduct(Product product) throws ProductAlreadyExists {
-        if (products.indexOf(product) != -1) throw new ProductAlreadyExists("Товар уже добавлен");
-        else products.add(product);
+        if (products.indexOf(product) != -1) {
+            throw new ProductAlreadyExists("Товар уже добавлен");
+        }
+        else {
+            products.add(product);
+        }
     }
 
     public void updateProduct(Product product) throws ProductNotValid {
-        List<Long> ids = new ArrayList<>();
-        for (Product catalogProduct : products) {
-            ids.add(catalogProduct.getId());
+        List<Long> names = new ArrayList<>();
+        for (Product x : products) {
+            names.add(x.getId());
         }
-        if (ids.contains(product.getId())) {
-            if (product.getName().equals("")) throw new ProductNotValid("Name is not set");
-            products.add(ids.indexOf(product.getId()), product);
-            products.remove(ids.indexOf(product.getId())+1);
+        if (names.contains(product.getId())) {
+            if (product.getName().equals("")) throw new ProductNotValid("Название не задано");
+            products.add(names.indexOf(product.getId()), product);
+            products.remove(names.indexOf(product.getId())+1);
         } else throw new ProductNotFound("Товар не найден");
     }
 

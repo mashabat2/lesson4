@@ -19,16 +19,14 @@ public class Main {
             System.out.println("____");
         }
 
-        Product third = new Product(30, "Apple", "Farm2", "100");
-        // Добавим новый продукт
+        Product third = new Product(20, "Apple", "Farm2", "100");
+        // Обновим продукт под id=20
 
         try {
             catalog.updateProduct(third);
         } catch (ProductNotValid e) {
             e.printStackTrace();
         }
-
-
 
         // вывод информации о продуктах
         for (Product product : catalog.getAllProducts()) {
@@ -37,15 +35,12 @@ public class Main {
         }
 
         // удаление продукта
-        catalog.deleteProduct(20);
-
+        catalog.deleteProduct(10);
 
         // вывод информации о продуктах
         for (Product product : catalog.getAllProducts()) {
             product.productInfo();
             System.out.println("____");
         }
-
-
     }
 }
